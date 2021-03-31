@@ -14,7 +14,7 @@ const people = [
     friendsCount: 5000,
     followers: 4000,
     height: "160mm",
-    weight: "70kg"
+    weight: "70kg",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const people = [
     friendsCount: 1500,
     followers: 100,
     height: "160mm",
-    weight: "50kg"
+    weight: "50kg",
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ const people = [
     friendsCount: 500,
     followers: 900,
     height: "180mm",
-    weight: "70kg"
+    weight: "70kg",
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const people = [
     friendsCount: 900,
     followers: 100,
     height: "155mm",
-    weight: "65kg"
+    weight: "65kg",
   },
   {
     id: 5,
@@ -82,7 +82,7 @@ const people = [
     friendsCount: 1500,
     followers: 400,
     height: "140mm",
-    weight: "87kg"
+    weight: "87kg",
   },
   {
     id: 6,
@@ -99,7 +99,7 @@ const people = [
     friendsCount: 1505,
     followers: 10,
     height: "161mm",
-    weight: "74kg"
+    weight: "74kg",
   },
   {
     id: 7,
@@ -116,7 +116,7 @@ const people = [
     friendsCount: 999,
     followers: 540,
     height: "148mm",
-    weight: "54kg"
+    weight: "54kg",
   },
   {
     id: 8,
@@ -133,7 +133,7 @@ const people = [
     friendsCount: 500,
     followers: 300,
     height: "143mm",
-    weight: "89kg"
+    weight: "89kg",
   },
   {
     id: 9,
@@ -150,7 +150,7 @@ const people = [
     friendsCount: 2200,
     followers: 100,
     height: "173mm",
-    weight: "62kg"
+    weight: "62kg",
   },
   {
     id: 10,
@@ -167,7 +167,7 @@ const people = [
       "charcoal gray",
       "Big Apple Red",
       "Bubble Bath",
-      "Kiss me on the Tulips"
+      "Kiss me on the Tulips",
     ],
     favoriteSingers: ["Kanye West"],
     nationality: "USA",
@@ -178,7 +178,7 @@ const people = [
     friendsCount: 2121,
     followers: 212,
     height: "250mm",
-    weight: "90kg"
+    weight: "90kg",
   },
   {
     id: 10,
@@ -195,7 +195,7 @@ const people = [
     friendsCount: 2121,
     followers: 212,
     height: "169mm",
-    weight: "90kg"
+    weight: "90kg",
   },
   {
     id: 11,
@@ -212,7 +212,7 @@ const people = [
     friendsCount: 500,
     followers: 300,
     height: "160mm",
-    weight: "70kg"
+    weight: "70kg",
   },
 ];
 
@@ -223,11 +223,11 @@ const people = [
 // and returns an array of people who are Americans.
 // It should look like this[{ firstName: 'Loi', ...}, { firstName: 'Charles', ...}]
 
-const getAmericans = persons => {
+const getAmericans = (persons) => {
   document.getElementById("getAmericans").innerHTML = persons
     .filter(({ nationality }) => nationality === "USA")
-    .map(person => person.firstName)
-    .join(" ");
+    .map((person) => person.firstName)
+    .join("-");
 };
 
 function onGetAmericans() {
@@ -238,10 +238,10 @@ function onGetAmericans() {
 // and returns an array of people who work at 'CoderSchool'.
 // We would want it to look something like this [{ firstName: 'Loi', ...}, { firstName: 'Charles', ...}]
 
-const getCoderSchoolStaff = persons => {
+const getCoderSchoolStaff = (persons) => {
   document.getElementById("getCoderSchoolStaff").innerHTML = persons
-    .filter(person => person.company === "CoderSchool")
-    .map(staff => `<li>${staff.firstName}</li>`)
+    .filter((person) => person.company === "CoderSchool")
+    .map((staff) => `<li>${staff.firstName}</li>`)
     .join(" ");
 };
 
@@ -255,19 +255,19 @@ function onGetCoderSchoolStaff() {
 // is the most popular.
 // It should look like this { person: { firstName: 'Loi' }, total: 9000 }
 
-const getMostPopularPerson = persons => {
+const getMostPopularPerson = (persons) => {
   let mostPopulerInfo = { person: {}, totalPopularity: 0 };
 
-  persons.map(person => {
+  persons.map((person) => {
     const totalPopularity = person.friendsCount + person.followers;
     if (totalPopularity > mostPopulerInfo.totalPopularity) {
       const newMostPopular = { totalPopularity, person };
       mostPopulerInfo = newMostPopular;
     }
   });
-  document.getElementById("getMostPopularPerson").innerHTML = `${
-    mostPopulerInfo.person.firstName
-  } is the most popular with a score of ${mostPopulerInfo.totalPopularity}`;
+  document.getElementById(
+    "getMostPopularPerson"
+  ).innerHTML = `${mostPopulerInfo.person.firstName} is the most popular with a score of ${mostPopulerInfo.totalPopularity}`;
 };
 
 function onGetMostPopularPerson() {
@@ -282,6 +282,20 @@ function onGetMostPopularPerson() {
 // return an array. The array will contain persons who have nationality as VN for Vietnamese.
 // Make sure the function will account for 'VN' and 'vn'
 // It should look like this [{}, {}, {}, ...]
+const getVietnamese = (persons) => {
+  document.getElementById("getVietnamese").innerHTML = persons
+    .filter(
+      ({ nationality }) =>
+        nationality.toLowerCase() === "vn" ||
+        nationality.toLowerCase() === "vietnamese"
+    )
+    .map((person) => person.firstName)
+    .join(" ");
+};
+
+function findVietnamese() {
+  getVietnamese(people);
+}
 
 // 5. Define a function countGenders() which will take the people array as an argument and
 // return a string.
